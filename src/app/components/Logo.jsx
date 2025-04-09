@@ -10,7 +10,7 @@ export const Logo = () => {
         <img
           src="/group 4.svg"
           alt=""
-          className="absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+          className="absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pl-2"
         />
       </div>
       <div className="absolute border top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border-gray-500 size-85"></div>

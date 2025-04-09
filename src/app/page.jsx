@@ -1,34 +1,45 @@
 "use client";
-import { Search } from "@/app/components/Search";
+
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 import { Logo } from "./components/Logo";
 import { Moon } from "./components/Moon";
 import { Sun } from "./components/Sun";
-import { Container } from "./components/Container";
 
 const Home = () => {
-  const [input, setInput] = useState("");
   const [cityName, setCityName] = useState("Ulaanbaatar");
   const [weather, setWeather] = useState({});
 
-  useEffect(() => {
-    const weatherKey = process.env.WEATHERAPIKEY;
-    const response = async () => {
-      const { data } = await axios(
-        `https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${cityName}`
-      );
-    };
-    response();
-  }, []);
+  const weatherApiKey = process.env.WEATHER_API_KEY;
+  console.log("weatherApiKey", weatherApiKey);
 
+  useEffect(() => {
+    const getWeather = async () => {
+      const weather = await axios(
+        `https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${cityName}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      setWeather(weather.data);
+    };
+
+    getWeather();
+  }, [cityName]);
+
+  console.log("weather", weather);
+
+  // const dayTemp = ......
+  //         https://api.weatherapi.com/v1/forecast.json?key=1d7992f7f8e448bdafb40443250704&q=Ulaanbaatar
   return (
-    <div className="flex h-screen relative">
+    <div className="flex h-screen ">
       <Sun />
       <Moon />
       <Logo />
-
-      {/* <Container /> */}
     </div>
   );
 };
