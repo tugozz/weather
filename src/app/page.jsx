@@ -1,44 +1,69 @@
 "use client";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Logo } from "./components/Logo";
 import { Moon } from "./components/Moon";
 import { Sun } from "./components/Sun";
+import { SearchInput } from "./components/SearchInput";
+
+import axios from "axios";
 
 const Home = () => {
   const [cityName, setCityName] = useState("Ulaanbaatar");
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState({
+    dayTemperature: 0,
+    nightTemperature: 0,
+    textCondition: "",
+  });
 
-  const weatherApiKey = process.env.WEATHER_API_KEY;
-  console.log("weatherApiKey", weatherApiKey);
+  const [loading, setLoading] = useState(false);
+
+  const handleCitySelect = (city) => {
+    setCityName(city);
+  };
 
   useEffect(() => {
     const getWeather = async () => {
-      const weather = await axios(
-        `https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${cityName}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const weatherApiKey = process.env.WEATHER_API_KEY;
+      try {
+        setLoading(true);
+        const { data } = await axios(
+          `https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${cityName}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const dayTemperature = data?.forecast?.forecastday?.[0].day.maxtemp_c;
+        const nightTemperature = data?.forecast?.forecastday?.[0].day.mintemp_c;
+        const textCondition =
+          data?.forecast?.forecastday?.[0].day.condition.text;
+        const date = data?.forecast?.forecastday[0].date;
 
-      setWeather(weather.data);
+        setWeather({ dayTemperature, nightTemperature, textCondition, date });
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     getWeather();
   }, [cityName]);
 
-  console.log("weather", weather);
-
-  // const dayTemp = ......
-  //         https://api.weatherapi.com/v1/forecast.json?key=1d7992f7f8e448bdafb40443250704&q=Ulaanbaatar
   return (
     <div className="flex h-screen ">
-      <Sun />
-      <Moon />
+      <SearchInput onCitySelect={handleCitySelect} />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <Sun weather={weather} />
+          <Moon weather={weather} />
+        </>
+      )}
       <Logo />
     </div>
   );

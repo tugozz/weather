@@ -4,23 +4,22 @@ export const useCountries = () => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    async function fetchcountries() {
+    async function fetchCountries() {
       try {
         const response = await fetch(
           "https://countriesnow.space/api/v0.1/countries"
         );
         const data = await response.json();
-
         setCountries(data.data);
       } catch (error) {
-        console.error("aldaa :", error);
+        console.error("Failed to fetch countries:", error);
       }
     }
-    fetchcountries();
+    fetchCountries();
   }, []);
 
-  const allCityName = countries.flatMap((country) =>
+  const allCityNames = countries.flatMap((country) =>
     country.cities.map((city) => `${city}, ${country.country}`)
   );
-  return allCityName;
+  return allCityNames;
 };
