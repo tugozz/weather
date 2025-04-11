@@ -8,14 +8,14 @@ export const Moon = ({ weather }) => {
   return (
     <div className="flex-1 bg-black pt-24">
       <section className="relative flex flex-1 items-center justify-center ">
-        <div className="relative flex w-[567px] ">
+        <div className="relative flex  ">
           <div className="z-20 w-103 h-202  overflow-hidden shadow-lg bg-[#111827]/75  rounded-4xl top-50px">
             <div className="space-y-12 px-10 py-14 backdrop-blur-lg ">
               <div className="flex justify-between items-center">
                 <div className="space-y-2">
                   <h4 className="text-gray-400">{weather.date}</h4>
                   <h2 className="h-12 text-5xl font-extrabold text-white">
-                    Ulaanbaatar
+                    {weather.location}
                   </h2>
                 </div>
               </div>

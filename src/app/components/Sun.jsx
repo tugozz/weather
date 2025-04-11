@@ -8,14 +8,14 @@ import { SearchInput } from "./SearchInput";
 export const Sun = ({ weather }) => {
   return (
     <section className=" flex flex-1  justify-center ">
-      <div className=" flex w-[567px] mt-24">
+      <div className=" flex  mt-24">
         <div className="z-20 w-103 h-202  overflow-hidden shadow-lg bg-white/75 rounded-4xl">
           <div className="space-y-12 px-10 py-14 backdrop-blur-lg ">
             <div className="flex justify-between items-center">
               <div className="space-y-2">
                 <h4 className="text-gray-400">{weather.date}</h4>
                 <h2 className="h-12 text-5xl font-extrabold text-gray-900">
-                  Ulaanbaatar
+                  {weather.location}
                 </h2>
               </div>
             </div>

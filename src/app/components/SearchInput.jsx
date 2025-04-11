@@ -21,16 +21,18 @@ export const SearchInput = ({ onCitySelect }) => {
 
   return (
     <div className="absolute">
-      <SearchInput />
-      <div className="flex-1 bg-[#f2f4f6] relative">
-        <div className="flex flex-1 absolute top-10 left-30 rounded-full text-[19px] bg-white">
+      <div
+        className="relative
+       top-10 left-36 z-20"
+      >
+        <div className="flex items-center bg-white rounded-full text-[19px] shadow-md px-2">
           <img src="/search.svg" alt="" className="w-12 h-12" />
           <input
             type="text"
             value={input}
             onChange={handleInputChange}
             placeholder="Input your city"
-            className="w-142 py-2.5 pl-4 pr-3 outline-none font-bold opacity-20"
+            className="w-96 py-2.5 pl-4 pr-3 outline-none font-bold opacity-100"
           />
         </div>
 

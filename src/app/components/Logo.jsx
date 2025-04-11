@@ -13,9 +13,11 @@ export const Logo = () => {
           <div className="absolute bg-black w-15 h-[70px] -bottom-[150px] left-[49px] rounded-tl-full"></div>
         </div>
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-400 rounded-full size-[270px]"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-400 rounded-full size-[430px]"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-400 rounded-full size-[590px]"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-200 rounded-full size-[270px]"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-200 rounded-full size-[430px]"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-200 rounded-full size-[590px]"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-200 rounded-full size-[910px]"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-200 rounded-full size-[1100px]"></div>
       <div className="flex items-center justify-center size-[100px] bg-white rounded-full gap-x-2">
         <div className="flex">
           <img className="w-[30px] h-[60px]" src="/group 4.svg" alt="" />

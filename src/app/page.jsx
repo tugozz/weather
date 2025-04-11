@@ -42,7 +42,15 @@ const Home = () => {
           data?.forecast?.forecastday?.[0].day.condition.text;
         const date = data?.forecast?.forecastday[0].date;
 
-        setWeather({ dayTemperature, nightTemperature, textCondition, date });
+        const location = data?.location?.name;
+
+        setWeather({
+          dayTemperature,
+          nightTemperature,
+          textCondition,
+          date,
+          location,
+        });
       } catch (error) {
         console.error("Error fetching weather data:", error);
       } finally {
